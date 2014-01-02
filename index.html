@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Todo</title>
+        <link rel="stylesheet" href="todo.css" type="text/css" charset="utf-8">
+    </head>
+    <body ng-app="TodoApp">
+        <h2>Todo</h2>
+        <div ng-controller="TodoCtrl">
+            <form ng-submit="addTodo()">
+                <input type="text" ng-model="todoText" size="30" placeholder="add new todo here">
+                <input class="btn-primary" type="submit" value="add">
+            </form>
+            <span>{{ remaining() }} of {{ todos.length }} remaining</span>
+            <a href="" ng-click="archive()">archive</a>
+            <ul class="unstyled">
+                <li ng-repeat="todo in todos">
+                    <input type="checkbox" ng-model="todo.done">
+                    <span class="done-{{todo.done}}" ng-dbclick="editTodo(todo)">{{todo.text}}</span>
+                    <button ng-click="removeTodo(todo)"></button>
+                </li>
+            </ul>
+        </div>
+        <script src="bower_components/angular/angular.min.js"></script>
+        <script src="todo.js"></script>
+    </body>
+</html>
